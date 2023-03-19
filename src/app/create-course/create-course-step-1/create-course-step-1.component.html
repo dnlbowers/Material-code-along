@@ -12,7 +12,7 @@
         <mat-error *ngIf="courseTitle.errors?.minlength">
             A Minimum length of 5 characters is required
         </mat-error>
-        
+
     </mat-form-field>
 
     <mat-radio-group class="course-type" formControlName="courseType" >
@@ -21,6 +21,25 @@
         <mat-radio-button value="premium">Premium</mat-radio-button>
 
     </mat-radio-group>
+
+    <mat-form-field>
+        <mat-label>Select a category</mat-label>
+        <mat-select formControlName="category" placeholder="Select Category">
+
+            <mat-option>None</mat-option>
+            
+            <mat-optgroup label="Beginners">
+                <mat-option value="newprograming">New to Programming</mat-option>
+                <mat-option value="newjavascript">New to Javascript</mat-option>
+                <mat-option value="newangular">New to Angular</mat-option>
+            </mat-optgroup>
+            
+            <mat-option value="intermediate">Intermediate</mat-option>
+            <mat-option value="advanced">Advanced</mat-option>
+
+        </mat-select>
+
+    </mat-form-field>
 
 </div>
 
