@@ -11,3 +11,8 @@ mat-toolbar a {
   color: white;
 }
 
+
+.sidenav-icon {
+  color: #000;
+  margin-right: 4px !important;
+}
