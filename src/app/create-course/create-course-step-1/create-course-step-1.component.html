@@ -48,7 +48,7 @@
             placeholder="Release date" [matDatepicker]="releasedAtPicker">
 
 
-        <mat-datepicker #releasedAtPicker>
+        <mat-datepicker #releasedAtPicker [dateClass]="dateClass">
 
         </mat-datepicker>
         <mat-datepicker-toggle matIconSuffix [for]="releasedAtPicker"></mat-datepicker-toggle>
