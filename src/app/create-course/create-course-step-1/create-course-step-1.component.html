@@ -41,6 +41,22 @@
 
     </mat-form-field>
 
+    <mat-form-field appearance="outline">
+
+        <mat-label>Release Date</mat-label>
+        <input matInput formControlName="releasedAt" 
+            placeholder="Release date" [matDatepicker]="releasedAtPicker">
+
+
+        <mat-datepicker #releasedAtPicker>
+
+        </mat-datepicker>
+        <mat-datepicker-toggle matIconSuffix [for]="releasedAtPicker"></mat-datepicker-toggle>
+
+        
+
+    </mat-form-field>
+
 </div>
 
 
