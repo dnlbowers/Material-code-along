@@ -46,7 +46,6 @@ export class CourseComponent implements OnInit, AfterViewInit {
 
         this.course = this.route.snapshot.data["course"];
         this.loadLessonsPage();
-
     }
 
     onLessonToggled(lesson: Lesson) {
