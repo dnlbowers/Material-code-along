@@ -11,12 +11,29 @@ import * as moment from 'moment';
 })
 export class CourseDialogComponent implements OnInit {
 
+    description: string;
+
+    form = this.fb.group({
+        description: ['', Validators.required],
+        category: ['BEGINNER', Validators.required],
+        releasedAt: [new Date(), Validators.required],
+        longDescription: ['', Validators.required],
+    })
+
     constructor(private fb: FormBuilder) {
 
 
     }
 
     ngOnInit() {
+
+    }
+
+    close() {
+
+    }
+
+    save() {
 
     }
 
