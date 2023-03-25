@@ -8,6 +8,7 @@ import {CoursesService} from "../services/courses.service";
 import {debounceTime, distinctUntilChanged, startWith, tap, delay, catchError, finalize} from 'rxjs/operators';
 import {merge, fromEvent, throwError, pipe} from "rxjs";
 import { Lesson } from '../model/lesson';
+import { SelectionModel } from '@angular/cdk/collections';
 
 
 @Component({
@@ -29,18 +30,28 @@ export class CourseComponent implements OnInit, AfterViewInit {
     @ViewChild(MatSort)
     sort: MatSort;
 
-    displayedColumns = ['seqNo', "description", "duration"];
+    selection = new SelectionModel<Lesson>(true, []);
+
 
     constructor(private route: ActivatedRoute,
                 private coursesService: CoursesService) {
 
     }
+    
+    displayedColumns = ['select', 'seqNo', "description", "duration"];
+
+    expandedLesson: Lesson | null;
 
     ngOnInit() {
 
         this.course = this.route.snapshot.data["course"];
         this.loadLessonsPage();
+    }
 
+    onLessonToggled(lesson: Lesson) {
+      this.selection.toggle(lesson);
+
+      console.log(this.selection.selected);
     }
 
     loadLessonsPage() {
@@ -66,6 +77,14 @@ export class CourseComponent implements OnInit, AfterViewInit {
         
     }
 
+    onToggleLesson(lesson: Lesson) {
+      if (lesson == this.expandedLesson) {
+        this.expandedLesson = null;
+      } else {
+        this.expandedLesson = lesson;
+      }
+    }
+
     ngAfterViewInit() {
 
       this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
@@ -75,6 +94,18 @@ export class CourseComponent implements OnInit, AfterViewInit {
         tap(() => this.loadLessonsPage())
       ).subscribe();
 
+    }
+
+    isAllSelected() {
+      return this.selection.selected?.length == this.lessons?.length;
+    }
+
+    toggleAll() {
+      if (this.isAllSelected()){
+        this.selection.clear();
+      } else {
+        this.selection.select(...this.lessons);
+      }
     }
 
 }
