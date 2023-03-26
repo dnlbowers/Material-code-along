@@ -10,6 +10,7 @@ import {Lesson} from '../model/lesson';
 })
 export class DragDropComponent {
 
+  done = []
   lessons = [
     {
       id: 120,
@@ -90,10 +91,24 @@ export class DragDropComponent {
     }
   ];
 
-  drop(event: CdkDragDrop<Lesson[]>) {
-    console.log("prev = ", event.previousIndex);
-    console.log("curr = ", event.currentIndex);
-
-    moveItemInArray(this.lessons, event.previousIndex, event.currentIndex);
+  dropMultiList(event: CdkDragDrop<Lesson[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
+
+
+
+ // drop(event: CdkDragDrop<Lesson[]>) {
+    // console.log("prev = ", event.previousIndex);
+    // console.log("curr = ", event.currentIndex);
+
+    // moveItemInArray(this.lessons, event.previousIndex, event.currentIndex);
+  // }
 }
