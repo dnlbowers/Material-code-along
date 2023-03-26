@@ -12,3 +12,11 @@ textarea {
     height: 100px;
     resize: vertical;
 }
+
+@media screen and (min-width: 600px) {
+  .edit-course-form {
+    width: 500px;
+  }
+}
+  
+
