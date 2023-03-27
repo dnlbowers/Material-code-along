@@ -6,6 +6,7 @@
     <mat-dialog-content [formGroup]="form">
       <mat-form-field>
 
+        <mat-label>Course Description</mat-label>
         <input matInput
                placeholder="Course Description"
                formControlName="description">
@@ -13,7 +14,8 @@
       </mat-form-field>
   
       <mat-form-field>
-  
+
+        <mat-label>Select Category</mat-label>
         <mat-select placeholder="Select category"
                     formControlName="category">
   
@@ -43,7 +45,7 @@
       </mat-form-field>
   
       <mat-form-field>
-  
+          <mat-label>Description</mat-label>
           <textarea matInput placeholder="Description"
                     formControlName="longDescription"
                     cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="3">
